@@ -3,10 +3,9 @@ Horuf
 
 Classes to Convert numbers to Words (تبدیل عدد به حروف)
 
----
 
 ##Usage:
----
+=====
     $horuf = new horuf();
     echo $horuf->convert(568); //returns پانصد و شصت و هشت
 
