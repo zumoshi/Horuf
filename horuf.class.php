@@ -68,7 +68,7 @@ class horuf{
 						1=>'اول',
 						3=>'سوم');
 					$this->pasvand=($tartibi==2)?'مین':'م';
-					$this->replace=array('سه','یک');
+					$this->replace=array('سه');
 					break;
 				case 'en':
 				case 'eng':
@@ -85,7 +85,7 @@ class horuf{
 	function convert($num){
 		//$this->ifnull($this->exception[$num],$this->yekan[$num]);
 		if(isset($this->exception[$num]))return $this->exception[$num];
-		$res=$this->remove_separator($this->convert_millions($num),$this->separator);
+		$res=$this->remove_separator($this->convert_billions($num),$this->separator);
 		foreach ($this->replace as $rep) {
 			//bugfix for En [first,second,third]
 			if($this->has_str($res, $rep))return substr($res,0,-strlen($rep)).$this->exception[$num%10];
@@ -93,6 +93,10 @@ class horuf{
 		//bugfix for eightth
 		if(substr($res, -1)==substr($this->pasvand,0,1))return substr($res, 0, -1).$this->pasvand;
 		return $res.$this->pasvand;
+	}
+	function convert_billions($num){
+		if($num>=1000000000)return $this->convert_billions(floor($num/1000000000))."{$this->part[4]}{$this->separator}".$this->convert_millions($num%1000000000);
+		return $this->convert_millions($num);
 	}
 	function convert_millions($num){
 		if($num>=1000000)return $this->convert_millions(floor($num/1000000))."{$this->part[3]}{$this->separator}".$this->convert_thousands($num%1000000);
