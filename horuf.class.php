@@ -60,9 +60,11 @@ class horuf{
 				case 'persian':
 					$this->exception = ($tartibi==2)?
 					array(
+						0=>'صفرمین',
 						1=>'اولین',
 						3=>'سومین')
 					:array(
+						0=>'صفرم',
 						1=>'اول',
 						3=>'سوم');
 					$this->pasvand=($tartibi==2)?'مین':'م';
@@ -71,7 +73,7 @@ class horuf{
 				case 'en':
 				case 'eng':
 				case 'englist':
-					$this->exception=array(1=>'first',2=>'second',3=>'third');
+					$this->exception=array(0=>'zero',1=>'first',2=>'second',3=>'third');
 					$this->pasvand='th';
 					$this->replace=array('one','two','three');
 					break;
