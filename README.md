@@ -22,3 +22,8 @@ will work with big numbers too:
 
     echo $horuf->convert(190095323);
     //returns صد و نود میلیون و نود و پنج هزار و سیصد و بیست و سه
+    
+###update:
+added English.
+    $horuf = new horuf('english',horuf:Ordinal);
+    echo $horuf->convert(568); //returns five hundred sixty eighth
