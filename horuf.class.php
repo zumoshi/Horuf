@@ -95,15 +95,15 @@ class horuf{
 		return $res.$this->pasvand;
 	}
 	function convert_billions($num){
-		if($num>=1000000000)return $this->convert_billions(floor($num/1000000000))."{$this->part[4]}{$this->separator}".$this->convert_millions($num%1000000000);
+		if($num>=1000000000)return $this->remove_separator($this->convert_billions(floor($num/1000000000)))."{$this->part[4]}{$this->separator}".$this->convert_millions($num%1000000000);
 		return $this->convert_millions($num);
 	}
 	function convert_millions($num){
-		if($num>=1000000)return $this->convert_millions(floor($num/1000000))."{$this->part[3]}{$this->separator}".$this->convert_thousands($num%1000000);
+		if($num>=1000000)return $this->remove_separator($this->convert_millions(floor($num/1000000)))."{$this->part[3]}{$this->separator}".$this->convert_thousands($num%1000000);
 		return $this->convert_thousands($num);
 	}
 	function convert_thousands($num){
-		if($num>=1000)return $this->convert_thousands(floor($num/1000))."{$this->part[2]}{$this->separator}".$this->convert_hundreds($num%1000);
+		if($num>=1000)return $this->remove_separator($this->convert_thousands(floor($num/1000)))."{$this->part[2]}{$this->separator}".$this->convert_hundreds($num%1000);
 		return $this->convert_hundreds($num);
 	}
 	function convert_hundreds($num){
