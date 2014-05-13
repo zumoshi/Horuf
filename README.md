@@ -5,7 +5,7 @@ Classes to Convert numbers to Words (تبدیل عدد به حروف)
 
 
 ##Usage:
-=====
+
     $horuf = new horuf();
     echo $horuf->convert(568); //returns پانصد و شصت و هشت
 
@@ -24,5 +24,6 @@ will work with big numbers too:
     
 ###update:
 added English.
+
     $horuf = new horuf('english',horuf:Ordinal);
     echo $horuf->convert(568); //returns five hundred sixty eighth
