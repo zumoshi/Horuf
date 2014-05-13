@@ -55,6 +55,7 @@ class horuf{
 		}	
 		if($tartibi>0){
 			switch($lang){
+				case 'fa':
 				case 'farsi':
 				case 'persian':
 					$this->exception = ($tartibi==2)?
@@ -64,8 +65,8 @@ class horuf{
 					:array(
 						1=>'اول',
 						3=>'سوم');
-					$this->yekan[3]='سو';
 					$this->pasvand=($tartibi==2)?'مین':'م';
+					$this->replace=array('سه','یک');
 					break;
 				case 'en':
 				case 'eng':
