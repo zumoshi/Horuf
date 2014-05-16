@@ -25,6 +25,7 @@ class horuf{
 	function __construct($lang='farsi',$tartibi=0){
 		$this->pasvand='';
 		$this->replace=array();
+		$this->replace_e=array();
 		switch($lang){
 			case 'fa':
 			case 'farsi':
@@ -69,6 +70,9 @@ class horuf{
 						3=>'سوم');
 					$this->pasvand=($tartibi==2)?'مین':'م';
 					$this->replace=array('سه');
+					$this->replace_e=($tartibi==2)?
+						array('سی'=>'سی ام'):
+						array('سی'=>'سی امین');
 					break;
 				case 'en':
 				case 'eng':
@@ -89,6 +93,10 @@ class horuf{
 		foreach ($this->replace as $rep) {
 			//bugfix for En [first,second,third]
 			if($this->has_str($res, $rep))return substr($res,0,-strlen($rep)).$this->exception[$num%10];
+		}
+		foreach ($this->replace_e as $what=>$boz) {
+			//bugfix for En [first,second,third]
+			if($this->has_str($res, $what))return substr($res,0,-strlen($what)).$boz;
 		}
 		//bugfix for eightth
 		if(substr($res, -1)==substr($this->pasvand,0,1))return substr($res, 0, -1).$this->pasvand;
